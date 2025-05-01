@@ -1,23 +1,8 @@
-# C++ objects and libs
-*.slo
-*.lo
-*.o
-*.a
-*.la
-*.lai
-*.so
-*.so.*
-*.dll
-*.dylib
-
-# Qt-es
-object_script.*.Release
-object_script.*.Debug
-*_plugin_import.cpp
-/.qmake.cache
-/.qmake.stash
+# Qt Creator / Qt 관련 파일들
 *.pro.user
 *.pro.user.*
+*.qmake.cache
+*.qmake.stash
 *.qbs.user
 *.qbs.user.*
 *.moc
@@ -27,28 +12,46 @@ qrc_*.cpp
 ui_*.h
 *.qmlc
 *.jsc
-Makefile*
+
+# 빌드 파일들 (빌드 중 생성된 파일들)
+*.o
+*.a
+*.so
+*.so.*
+*.dll
+*.dylib
+*.exe
+*.out
+*.dSYM/
+
+# Qt 프로젝트에서 생성되는 캐시 파일들
 *build-*
-*.qm
 *.prl
+*.qm
 
-# Qt unit tests
-target_wrapper.*
-
-# QtCreator
-*.autosave
-
-# QtCreator Qml
+# Qt Creator / Qt QML 관련 설정 파일들
 *.qmlproject.user
 *.qmlproject.user.*
 
-# QtCreator CMake
+# CMake 관련 파일들 (CMake로 프로젝트 빌드 시)
 CMakeLists.txt.user*
 
-# QtCreator 4.8< compilation database
-compile_commands.json
+# macOS에서 생성되는 특정 파일들
+.DS_Store
 
-# QtCreator local machine specific files for imported projects
-*creator.user*
+# Linux에서 생성되는 파일들
+*~
 
-*_qmlcache.qrc
+# 임시 파일 및 디렉토리들
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+
+# 기타 IDE 관련 파일들
+.idea/
+.vscode/
+
+# 사용자 고유 파일
+*.creator.user
