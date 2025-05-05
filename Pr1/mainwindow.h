@@ -1,7 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "imagelabel.h"
 #include <QMainWindow>
+#include <QScrollArea>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,5 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    ImageLabel *imageLabel;
+    QScrollArea* scrollArea;
+    QWidget* container;
 };
 #endif // MAINWINDOW_H
