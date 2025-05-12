@@ -57,10 +57,10 @@ C++17과 Qt Creator를 기반으로 한 **이미지 비교 프로그램** 개발
 
 ## 주요 기술 스택
 
-- **C++17**
-- **Qt5 / Qt Creator**
-- **QWidget 기반 GUI 프로그래밍**
-- **GitHub 브랜치별 기능 개발 관리**
+- C++17
+- Qt5 / Qt Creator
+- QWidget 기반 GUI 프로그래밍
+- GitHub 브랜치별 기능 개발 관리
 
 ---
 
