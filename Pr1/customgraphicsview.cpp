@@ -16,13 +16,12 @@ void CustomGraphicsView::setImage(const QPixmap &pixmap)
 {
     scene->clear(); // 기존 이미지 삭제
     pixmapItem = scene->addPixmap(pixmap); // 새로운 이미지 추가
-    scene->setSceneRect(pixmap.rect());
+    scene->setSceneRect(pixmap.rect()); // 이미지 기준으로 씬 사이즈 맞춤
 
     fitInView(pixmapItem, Qt::KeepAspectRatio); // 화면에 꽉 맞추기
 
     // 화면에 맞춘 초기 스케일 저장
     initialScale = transform().m11();
-    scaleFactor = initialScale;
 }
 
 // 휠로 확대/축소하는 함수
@@ -33,9 +32,9 @@ void CustomGraphicsView::wheelEvent(QWheelEvent *event)
 
     double factor;
     if (event->angleDelta().y() > 0)
-        factor = 1.1; // 휠 위로 → 확대
+        factor = 1.1; // 휠 위로 -> 확대
     else
-        factor = 0.9; // 휠 아래로 → 축소
+        factor = 0.9; // 휠 아래로 -> 축소
 
     double currentScale = transform().m11();
     double newScale = currentScale * factor;
@@ -52,8 +51,6 @@ void CustomGraphicsView::wheelEvent(QWheelEvent *event)
     t.scale(newScale, newScale);
     setTransform(t);
 
-    scaleFactor = newScale;
-
     event->accept();
 }
 
@@ -62,7 +59,7 @@ void CustomGraphicsView::resizeEvent(QResizeEvent *event)
 {
     QGraphicsView::resizeEvent(event);
 
-    if (pixmapItem && scaleFactor == initialScale)
+    if (pixmapItem && transform().m11() == initialScale)
     {
         fitInView(pixmapItem, Qt::KeepAspectRatio);
     }

@@ -34,7 +34,7 @@ private:
     QPushButton* loadLeftButton;   // 왼쪽 이미지 불러오기 버튼
     QPushButton* loadRightButton;  // 오른쪽 이미지 불러오기 버튼
 
-    QSplitter* splitter;  // 두 뷰를 수평으로 나누는 스플리터
+    QSplitter* splitter;  // 두 뷰를 나누는 스플리터
     QWidget* container;   // 스플리터를 감싸는 컨테이너
 };
 

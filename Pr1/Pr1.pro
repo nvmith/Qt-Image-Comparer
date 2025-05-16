@@ -10,13 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     customgraphicsview.cpp \
-    imagelabel.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     customgraphicsview.h \
-    imagelabel.h \
     mainwindow.h
 
 FORMS += \
