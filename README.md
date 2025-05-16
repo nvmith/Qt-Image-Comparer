@@ -63,10 +63,30 @@ C++과 Qt Creator를 기반으로 한 **이미지 비교 데스크탑 애플리�
 
 ## 주요 기술 스택
 
-- C++17
+- C++
 - Qt6 / Qt Creator
 - QWidget 기반 GUI 프로그래밍
 - GitHub 브랜치별 기능 분리 개발
+
+---
+
+## 실행 화면
+
+| 초기 실행 화면 | 이미지 로딩 후 |
+|:--:|:--:|
+| <img width="1280" alt="Image" src="https://github.com/user-attachments/assets/67cd6ba9-582e-43e7-8ea0-d479d425f99a" /> | <img width="1280" alt="Image" src="https://github.com/user-attachments/assets/283a62f4-fd10-49d8-ac88-1cb01f49dabc" /> |
+
+| 색상 선택 다이얼로그 | 비교 결과 팝업 |
+|:--:|:--:|
+| <img width="1280" alt="Image" src="https://github.com/user-attachments/assets/ac116472-556f-43fa-a095-0b0f9008b0af" /> | <img width="602" alt="Image" src="https://github.com/user-attachments/assets/655a658d-277f-4c5f-b075-f38935c45ba5" /> |
+
+---
+
+> 사용자는 좌/우 이미지를 선택한 뒤  
+> `"비교 시작"` 버튼을 클릭하여 두 이미지 간 차이를 시각적으로 확인할 수 있습니다.  
+>  
+> 비교 색상은 사용자가 직접 선택할 수 있으며,  
+> 차이 결과는 팝업창으로 표시되며 차이 비율도 함께 출력합니다.
 
 ---
 
