@@ -1,9 +1,10 @@
 #include "customgraphicsview.h"
 
 #include <QWheelEvent>
+#include <QTimer>
 
 CustomGraphicsView::CustomGraphicsView(QWidget *parent)
-    : QGraphicsView(parent), scene(new QGraphicsScene(this)), pixmapItem(nullptr), scaleFactor(1.0), initialScale(1.0)
+    : QGraphicsView(parent), scene(new QGraphicsScene(this)), pixmapItem(nullptr), initialScale(0.0)
 {
     setScene(scene);
     setDragMode(QGraphicsView::ScrollHandDrag); // 드래그로 스크롤 가능
@@ -18,10 +19,13 @@ void CustomGraphicsView::setImage(const QPixmap &pixmap)
     pixmapItem = scene->addPixmap(pixmap); // 새로운 이미지 추가
     scene->setSceneRect(pixmap.rect()); // 이미지 기준으로 씬 사이즈 맞춤
 
-    fitInView(pixmapItem, Qt::KeepAspectRatio); // 화면에 꽉 맞추기
+    fitInView(pixmapItem, Qt::KeepAspectRatio); // 화면 맞추기 (임시 조정)
 
-    // 화면에 맞춘 초기 스케일 저장
-    initialScale = transform().m11();
+    QTimer::singleShot(0, this, [this]() { // Qt 이벤트 루프 한 번 돌린 후
+        fitInView(pixmapItem, Qt::KeepAspectRatio);  // 한 번 더 (최종 조정)
+        initialScale = transform().m11(); // 정확한 초기 스케일 저장
+        setTransform(QTransform().scale(initialScale, initialScale)); // 정확히 맞추기
+    });
 }
 
 // 휠로 확대/축소하는 함수
@@ -63,4 +67,11 @@ void CustomGraphicsView::resizeEvent(QResizeEvent *event)
     {
         fitInView(pixmapItem, Qt::KeepAspectRatio);
     }
+}
+
+QPixmap CustomGraphicsView::getPixmap() const
+{
+    if(pixmapItem)
+        return pixmapItem->pixmap();
+    return QPixmap(); // 비어있는 경우
 }

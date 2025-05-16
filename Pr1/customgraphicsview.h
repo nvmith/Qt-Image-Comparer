@@ -14,6 +14,7 @@ public:
     CustomGraphicsView(QWidget *parent = nullptr);
 
     void setImage(const QPixmap& pixmap); // 이미지를 뷰에 설정하는 함수
+    QPixmap getPixmap() const;
 
 protected:
     void wheelEvent(QWheelEvent *event) override; // 마우스 휠로 확대/축소
