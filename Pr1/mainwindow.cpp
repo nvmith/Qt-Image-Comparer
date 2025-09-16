@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QColorDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -97,8 +98,14 @@ void MainWindow::compareImage()
 {
     // 이미지가 비어있으면 아무 것도 하지 않음
     if (leftView->getPixmap().isNull() || rightView->getPixmap().isNull())
+    {
+        QMessageBox::warning(
+            this,
+            "이미지 없음",
+            "비교를 시작하려면 왼쪽과 오른쪽 이미지를 모두 불러와 주세요."
+            );
         return;
-
+    }
     QColor diffColor = QColorDialog::getColor(Qt::red, this, "차이 색상 선택"); // 사용자가 직접 차이 색상 선택
 
     if (!diffColor.isValid()) { // 색을 선택하지 않으면 return
